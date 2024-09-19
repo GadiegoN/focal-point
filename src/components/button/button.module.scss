@@ -1,0 +1,28 @@
+.button {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    line-height: 19.36px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .default {
+    background: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
+    color: white;
+    font-weight: 500;
+  }
+  
+  .destructive {
+    background: linear-gradient(90deg, #D30707 0%, #F05353 68.65%);
+    color: white;
+    font-weight: 500;
+  }
+  
+  .ghost {
+    background: transparent;
+    color: #000000;
+    font-weight: 400;
+  }
