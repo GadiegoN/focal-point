@@ -1,38 +1,37 @@
-"use client";
-
 import Trash from "@/assets/images/Icon.svg";
 import Image from "next/image";
 import styles from "./task-item.module.scss";
-import { useState } from "react";
 
+interface Task {
+  id: string;
+  task: string;
+  isCompleted: boolean;
+}
 interface TaskItemProps {
-  taskTitle: string;
+  task: Task;
+  onToggle: () => void;
   onDelete: () => void;
 }
 
-export function TaskItem({ taskTitle, onDelete }: TaskItemProps) {
-  const [isCompleted, setIsCompleted] = useState(false);
-
-  const handleCheckboxChange = () => {
-    setIsCompleted(!isCompleted);
-  };
-
+export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
   return (
     <div className={styles.container}>
       <label className={styles.checkboxContainer}>
         <input
           type="checkbox"
-          checked={isCompleted}
-          onChange={handleCheckboxChange}
+          checked={task.isCompleted}
+          onChange={onToggle}
           className={styles.checkbox}
         />
         <span className={styles.checkmark}></span>
       </label>
 
       <span
-        className={`${styles.title} ${isCompleted ? styles.completed : ""}`}
+        className={`${styles.title} ${
+          task.isCompleted ? styles.completed : ""
+        }`}
       >
-        {taskTitle}
+        {task.task}
       </span>
 
       <button className={styles.deleteButton} onClick={onDelete}>

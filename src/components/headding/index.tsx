@@ -2,12 +2,12 @@ import { ReactNode } from "react";
 import styles from "./heading.module.scss";
 
 interface HeadingProps {
-  varaint: "title" | "card-title" | "subtitle" | "text";
+  variant: "title" | "card-title" | "subtitle" | "text";
   children: ReactNode;
 }
 
-export function Heading({ varaint, children }: HeadingProps) {
-  switch (varaint) {
+export function Heading({ variant, children }: HeadingProps) {
+  switch (variant) {
     case "title":
       return <h1 className={styles.h1}>{children}</h1>;
     case "card-title":

@@ -9,9 +9,9 @@ export function Header() {
       <div className={styles.headerContainer}>
         <Image src={Logo} alt="Logo focal point" width={150} height={36} />
 
-        <Heading varaint="title">Bem vindo de volta, Gadiego</Heading>
+        <Heading variant="title">Bem vindo de volta, Gadiego</Heading>
 
-        <Heading varaint="subtitle">Segunda, 01 de dezembro de 2025</Heading>
+        <Heading variant="subtitle">Segunda, 01 de dezembro de 2025</Heading>
       </div>
     </header>
   );
