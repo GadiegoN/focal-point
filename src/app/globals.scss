@@ -38,13 +38,25 @@ body {
   margin: 0;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  div {
+    display: flex;
+  flex-direction: column;
+  gap: 8px;
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
+// @media (prefers-color-scheme: dark) {
+//   html {
+//     color-scheme: dark;
+//   }
+// }
