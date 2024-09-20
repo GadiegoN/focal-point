@@ -16,8 +16,10 @@ interface Task {
 
 export default function Home() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isDialogDelete, setIsDialogDelete] = useState(false);
   const [newTask, setNewTask] = useState<string>("");
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [deleteTaskId, setDeleteTaskId] = useState<string>("");
 
   useEffect(() => {
     const savedTasks = localStorage.getItem("tasks");
@@ -36,6 +38,7 @@ export default function Home() {
     setTasks((prevTasks) => [...prevTasks, newTask]);
     console.log("Nova tarefa adicionada:", newTask);
     setNewTask("");
+    setIsDialogOpen(false);
   }
 
   function handleFormSubmit(e: FormEvent) {
@@ -55,10 +58,18 @@ export default function Home() {
 
   function handleDeleteTask(taskId: string) {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+    setIsDialogDelete(false);
   }
 
   const openDialog = () => setIsDialogOpen(true);
   const closeDialog = () => setIsDialogOpen(false);
+  const closeDialogDelete = () => setIsDialogDelete(false);
+
+  function selectedTaskId(taskId: string) {
+    setIsDialogDelete(true);
+    setDeleteTaskId(taskId);
+  }
+
   const completedTasks = tasks.filter((task) => task.isCompleted);
   const incompleteTasks = tasks.filter((task) => !task.isCompleted);
 
@@ -74,7 +85,7 @@ export default function Home() {
                 key={task.id}
                 task={task}
                 onToggle={() => toggleTaskComplete(task.id)}
-                onDelete={() => handleDeleteTask(task.id)}
+                onDelete={() => selectedTaskId(task.id)}
               />
             ))
           ) : (
@@ -89,7 +100,7 @@ export default function Home() {
                 key={task.id}
                 task={task}
                 onToggle={() => toggleTaskComplete(task.id)}
-                onDelete={() => handleDeleteTask(task.id)}
+                onDelete={() => selectedTaskId(task.id)}
               />
             ))
           ) : (
@@ -114,6 +125,21 @@ export default function Home() {
           </div>
           <Button type="submit">Adicionar</Button>
         </form>
+      </Dialog>
+
+      <Dialog isOpen={isDialogDelete} onClose={closeDialogDelete}>
+        <Heading variant="card-title">Deletar tarefa</Heading>
+
+        <Heading variant="subtitle">
+          Tem certeza que você deseja deletar essa tarefa?
+        </Heading>
+
+        <Button
+          variant="destructive"
+          onClick={() => handleDeleteTask(deleteTaskId)}
+        >
+          Deletar
+        </Button>
       </Dialog>
     </>
   );
