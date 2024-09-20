@@ -8,17 +8,23 @@
     border-radius: 8px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+        background-color: var(--accent);
+        border: 1px solid var(--accent);
+        cursor: pointer;
+    }
 }
 
 .checkboxContainer {
     position: relative;
     display: inline-block;
+    cursor: pointer;
 }
 
 .checkbox {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
     height: 0;
     width: 0;
 }
@@ -56,6 +62,11 @@
     font-weight: 400;
     line-height: 19.36px;
     letter-spacing: -0.02em;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .completed {

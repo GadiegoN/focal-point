@@ -9,3 +9,11 @@
     margin-bottom: 24px;
     gap: 8px;
 }
+
+
+@media (min-width: 768px) {
+    .headerContainer {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+}

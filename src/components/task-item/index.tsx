@@ -16,9 +16,10 @@ interface TaskItemProps {
 export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
   return (
     <div className={styles.container}>
-      <label className={styles.checkboxContainer}>
+      <label htmlFor={task.id} className={styles.checkboxContainer}>
         <input
           type="checkbox"
+          id={task.id}
           checked={task.isCompleted}
           onChange={onToggle}
           className={styles.checkbox}

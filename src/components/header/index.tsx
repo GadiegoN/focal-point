@@ -2,8 +2,14 @@ import Image from "next/image";
 import Logo from "@/assets/images/logo.png";
 import styles from "./header.module.scss";
 import { Heading } from "../headding";
+import dayjs from "dayjs";
+import ptBR from "dayjs/locale/pt-br";
+
+dayjs.locale(ptBR);
 
 export function Header() {
+  const date = dayjs().format("dddd, DD [de] MMMM [de] YYYY");
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -11,7 +17,7 @@ export function Header() {
 
         <Heading variant="title">Bem vindo de volta, Gadiego</Heading>
 
-        <Heading variant="subtitle">Segunda, 01 de dezembro de 2025</Heading>
+        <Heading variant="subtitle">{date}</Heading>
       </div>
     </header>
   );
